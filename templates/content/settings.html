@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ajustes | Criativo AI</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            --bg-main: #020617;
+            --bg-card: #0f172a;
+            --brand-color: #6366f1;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255,255,255,0.08);
+        }
+
+        body { 
+            background: var(--bg-main); min-height: 100vh;
+            font-family: 'Inter', sans-serif; color: var(--text-light);
+            padding-bottom: 80px;
+        }
+
+        h2, h5 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+        /* Topbar Mobile */
+        .mobile-header { background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 15px 20px; position: sticky; top: 0; z-index: 40; display: flex; justify-content: space-between; align-items: center; }
+        .mobile-logo { height: 32px; width: auto; object-fit: contain; }
+
+        /* Bottom Tab Bar Mobile */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; align-items: center; padding: 10px 0 25px 0; z-index: 50; }
+        .bottom-nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 600; transition: all 0.2s; }
+        .bottom-nav-item i { font-size: 1.5rem; }
+        .bottom-nav-item.active { color: var(--brand-color); }
+
+        /* Cards e Formulário */
+        .saas-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); padding: 30px; }
+        
+        .form-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; font-weight: 700; }
+        .form-control, .form-select { border-radius: 12px; padding: 14px; border: 1px solid #334155; background-color: #1e293b; color: var(--text-light); font-weight: 500; }
+        .form-control:focus, .form-select:focus { border-color: var(--brand-color); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); background-color: #0f172a; }
+        
+        .btn-magic { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: #ffffff; font-weight: 700; border: none; border-radius: 12px; padding: 16px; width: 100%; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-magic:active { transform: scale(0.98); }
+
+        /* Desktop vs Mobile */
+        @media (max-width: 768px) { .desktop-sidebar { display: none !important; } .content-area { padding: 15px !important; } .page-title-section { display: none; } }
+        @media (min-width: 769px) { .bottom-nav, .mobile-header { display: none !important; } body { padding-bottom: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="mobile-header d-md-none">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" class="mobile-logo" onerror="this.outerHTML='<h5 class=\'m-0 text-white\'>Criativo.AI</h5>'">
+    <form action="{% url 'logout' %}" method="post" class="m-0">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline-light text-danger border-0 p-1"><i class="ph-bold ph-sign-out fs-4"></i></button>
+    </form>
+</div>
+
+<nav class="bottom-nav d-md-none">
+    <a href="/dashboard/" class="bottom-nav-item"><i class="ph-bold ph-magic-wand"></i><span>Criar</span></a>
+    <a href="/historico/" class="bottom-nav-item"><i class="ph-bold ph-folder-open"></i><span>Histórico</span></a>
+    <a href="/ajustes/" class="bottom-nav-item active"><i class="ph-fill ph-gear"></i><span>Ajustes</span></a>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-lg-2 desktop-sidebar px-4" style="background: var(--bg-card); border-right: 1px solid var(--border-color); min-height: 100vh; padding-top: 2rem;">
+            <div class="d-flex align-items-center mb-5 px-2">
+                <img src="{% static 'images/logo.png' %}" alt="Logotipo" style="height: 40px; max-width: 100%; object-fit: contain;">
+            </div>
+            <ul class="nav flex-column gap-2">
+                <li class="nav-item"><a href="/dashboard/" class="nav-link text-muted p-3"><i class="ph-bold ph-magic-wand me-2 fs-5"></i> Criar Conteúdo</a></li>
+                <li class="nav-item"><a href="/historico/" class="nav-link text-muted p-3"><i class="ph-bold ph-folder-open me-2 fs-5"></i> Histórico</a></li>
+                <li class="nav-item mt-4"><small class="text-uppercase text-muted fw-bold px-3" style="font-size: 0.65rem;">Configurações</small></li>
+                <li class="nav-item mt-2"><a href="/ajustes/" class="nav-link text-white bg-primary bg-opacity-10 rounded-3 fw-bold p-3"><i class="ph-fill ph-gear me-2 fs-5 text-primary"></i> Ajustes da Marca</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-9 col-lg-10 content-area p-4 p-md-5">
+            
+            <div class="d-flex justify-content-between align-items-start mb-5 page-title-section">
+                <div>
+                    <h2 class="m-0 text-white">Configurações da Marca ⚙️</h2>
+                    <p class="text-muted m-0 mt-1">Atualize as informações que a IA usa para gerar seu conteúdo.</p>
+                </div>
+                <form action="{% url 'logout' %}" method="post" class="m-0">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light text-danger fw-semibold d-flex align-items-center gap-2 rounded-3 px-3 py-2 border-0" style="background: rgba(239, 68, 68, 0.1);"><i class="ph-bold ph-sign-out fs-5"></i> Sair</button>
+                </form>
+            </div>
+
+            <div class="row justify-content-center justify-content-lg-start">
+                <div class="col-12 col-lg-8">
+                    <div class="saas-card">
+                        
+                        {% if request.GET.saved %}
+                            <div class="alert alert-success bg-success bg-opacity-10 text-success border-0 fw-semibold rounded-3 d-flex align-items-center mb-4">
+                                <i class="ph-fill ph-check-circle fs-4 me-2"></i> Configurações atualizadas com sucesso!
+                            </div>
+                        {% endif %}
+
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nome da Marca</label>
+                                    <input type="text" name="brand_name" class="form-control" value="{{ brand.brand_name }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Cidade de Atuação</label>
+                                    <input type="text" name="city" class="form-control" value="{{ brand.city }}" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Nicho de Atuação</label>
+                                <select name="niche" class="form-select" required>
+                                    <option value="hamburgueria" {% if brand.niche == 'hamburgueria' %}selected{% endif %}>Restaurantes/Hamburguerias</option>
+                                    <option value="dentista" {% if brand.niche == 'dentista' %}selected{% endif %}>Dentista</option>
+                                    <option value="advogado" {% if brand.niche == 'advogado' %}selected{% endif %}>Advogado</option>
+                                    <option value="estetica" {% if brand.niche == 'estetica' %}selected{% endif %}>Estética/Harmonização</option>
+                                    <option value="personal" {% if brand.niche == 'personal' %}selected{% endif %}>Personal Trainer</option>
+                                    <option value="loja_feminina" {% if brand.niche == 'loja_feminina' %}selected{% endif %}>Loja Feminina</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-5">
+                                <label class="form-label">Como sua marca fala?</label>
+                                <select name="tone_of_voice" class="form-select" required>
+                                    <option value="Descontraído, divertido, usando emojis" {% if "divertido" in brand.tone_of_voice %}selected{% endif %}>🍔 Descontraído e Divertido</option>
+                                    <option value="Profissional, ético, culto e seguro" {% if "Profissional" in brand.tone_of_voice %}selected{% endif %}>💼 Profissional e Seguro</option>
+                                    <option value="Acolhedor, empático, humanizado" {% if "Acolhedor" in brand.tone_of_voice %}selected{% endif %}>💆‍♀️ Acolhedor e Empático</option>
+                                    <option value="Agressivo em vendas, persuasivo" {% if "Agressivo" in brand.tone_of_voice %}selected{% endif %}>🔥 Focado em Vendas e Ofertas</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn-magic">
+                                <i class="ph-bold ph-floppy-disk fs-5 me-2"></i> Salvar Alterações
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

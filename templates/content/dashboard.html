@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Painel | Criativo AI</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            --bg-main: #020617;
+            --bg-card: #0f172a;
+            --brand-color: #6366f1;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255,255,255,0.08);
+        }
+
+        body { 
+            background: var(--bg-main);
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif; 
+            color: var(--text-light);
+            padding-bottom: 80px; /* Espaço para a barra inferior no mobile */
+        }
+
+        h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+        /* Topbar Mobile (Header) */
+        .mobile-header {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-logo { height: 32px; width: auto; object-fit: contain; }
+
+        /* Bottom Tab Bar (O Segredo do Mobile) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-color);
+            display: flex; justify-content: space-around; align-items: center;
+            padding: 10px 0 25px 0; /* Padding extra para iPhones */
+            z-index: 50;
+        }
+        
+        .bottom-nav-item {
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 600;
+            transition: all 0.2s;
+        }
+        .bottom-nav-item i { font-size: 1.5rem; }
+        .bottom-nav-item.active { color: var(--brand-color); }
+        .bottom-nav-item:hover { color: var(--text-light); }
+
+        /* Cards Premium */
+        .saas-card { 
+            background: var(--bg-card);
+            border: 1px solid var(--border-color); 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito de Brilho no Card */
+        .saas-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--brand-color), transparent);
+            opacity: 0.5;
+        }
+
+        /* Inputs Modernos Dark */
+        .form-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; }
+        .form-select { 
+            border-radius: 12px; padding: 14px; border: 1px solid #334155; 
+            background-color: #1e293b; color: var(--text-light); font-weight: 500;
+        }
+        .form-select:focus { border-color: var(--brand-color); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); background-color: #0f172a; }
+
+        /* Botão Mágico (CTA) */
+        .btn-magic {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #ffffff; font-weight: 700; border: none; border-radius: 12px;
+            padding: 16px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.9rem;
+        }
+        .btn-magic:active { transform: scale(0.98); }
+
+        /* Resultado do Post */
+        .post-result { 
+            background: #020617; border-radius: 16px; padding: 20px; 
+            font-size: 0.95rem; line-height: 1.6; color: #cbd5e1; 
+            white-space: pre-wrap; border: 1px solid var(--border-color);
+        }
+
+        .badge-status { background: rgba(16, 185, 129, 0.1); color: #34d399; font-size: 0.7rem; font-weight: 700; padding: 6px 12px; border-radius: 20px; text-transform: uppercase; border: 1px solid rgba(16,185,129,0.2); }
+
+        /* Esconde elementos desktop no mobile */
+        @media (max-width: 768px) {
+            .desktop-sidebar { display: none !important; }
+            .content-area { padding: 15px !important; }
+            .page-title-section { display: none; } /* Substituído pelo header mobile */
+        }
+        @media (min-width: 769px) {
+            .bottom-nav, .mobile-header { display: none !important; }
+            body { padding-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-header d-md-none">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" class="mobile-logo" onerror="this.outerHTML='<h5 class=\'m-0 text-white\'>Criativo.AI</h5>'">
+    
+    <form action="{% url 'logout' %}" method="post" class="m-0">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline-light text-danger border-0 p-1">
+            <i class="ph-bold ph-sign-out fs-4"></i>
+        </button>
+    </form>
+</div>
+
+<nav class="bottom-nav d-md-none">
+    <a href="/dashboard/" class="bottom-nav-item active">
+        <i class="ph-fill ph-magic-wand"></i>
+        <span>Criar</span>
+    </a>
+    <a href="/historico/" class="bottom-nav-item">
+        <i class="ph-bold ph-folder-open"></i>
+        <span>Histórico</span>
+    </a>
+    <a href="/ajustes/" class="bottom-nav-item">
+        <i class="ph-bold ph-gear"></i>
+        <span>Ajustes</span>
+    </a>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-lg-2 desktop-sidebar px-4" style="background: var(--bg-card); border-right: 1px solid var(--border-color); min-height: 100vh; padding-top: 2rem;">
+            <div class="d-flex align-items-center mb-5 px-2">
+                <img src="{% static 'images/logo.png' %}" alt="Logotipo" style="height: 500px; max-width: 100%; object-fit: contain;">
+            </div>
+            <ul class="nav flex-column gap-2">
+                <li class="nav-item"><a href="/dashboard/" class="nav-link text-white bg-primary bg-opacity-10 rounded-3 fw-bold p-3"><i class="ph-fill ph-magic-wand me-2 fs-5 text-primary"></i> Criar Conteúdo</a></li>
+                <li class="nav-item"><a href="/historico/" class="nav-link text-muted p-3"><i class="ph-bold ph-folder-open me-2 fs-5"></i> Histórico</a></li>
+                <li class="nav-item mt-4"><small class="text-uppercase text-muted fw-bold px-3" style="font-size: 0.65rem;">Configurações</small></li>
+                <li class="nav-item mt-2"><a href="/ajustes/" class="nav-link text-muted p-3"><i class="ph-bold ph-gear me-2 fs-5"></i> Ajustes da Marca</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-9 col-lg-10 content-area p-4 p-md-5">
+            
+            <div class="d-flex justify-content-between align-items-start mb-5 page-title-section">
+				<div>
+					<h2 class="m-0 text-white d-flex align-items-center gap-3">
+						Olá, {{ request.user.first_name|default:"Cliente" }}! 👋
+						<span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-50 fs-6 fw-bold rounded-pill px-3 py-2">
+							<i class="ph-bold ph-coins me-1"></i> {{ credits }} Créditos
+						</span>
+					</h2>
+					<p class="text-muted m-0 mt-2">Inteligência focada em <strong>{{ brand.brand_name }}</strong></p>
+				</div>
+                <form action="{% url 'logout' %}" method="post" class="m-0">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light text-danger fw-semibold d-flex align-items-center gap-2 rounded-3 px-3 py-2 border-0" style="background: rgba(239, 68, 68, 0.1);">
+                        <i class="ph-bold ph-sign-out fs-5"></i> Sair
+                    </button>
+                </form>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="saas-card">
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <i class="ph-fill ph-sliders fs-4" style="color: var(--brand-color);"></i>
+                            <h5 class="m-0 text-white">Estratégia</h5>
+                        </div>
+                        
+                        <form method="POST" id="generateForm">
+                            {% csrf_token %}
+                            
+                            <div class="mb-4">
+                                <label class="form-label">Formato do Conteúdo</label>
+                                <select name="format_type" class="form-select shadow-none" required>
+                                    <option value="feed">📸 Post de Feed (Foto + Texto)</option>
+                                    <option value="reels">🎬 Roteiro Viral (Reels/TikTok)</option>
+                                    <option value="stories">📱 Sequência de Stories (Vendas)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-5">
+                                <label class="form-label">Objetivo Principal</label>
+                                <select name="objective" class="form-select shadow-none" required>
+                                    <option value="Atrair clientes e fazer uma oferta direta de venda com senso de urgência">💰 Vender (Oferta Direta)</option>
+                                    <option value="Gerar engajamento, perguntas polêmicas ou divertidas para as pessoas comentarem">💬 Engajar (Gerar Comentários)</option>
+                                    <option value="Educar a audiência com uma dica de ouro ou tutorial que as pessoas queiram salvar">📌 Educar (Conteúdo de Valor)</option>
+                                    <option value="Humanizar a marca, contar uma história de bastidores e gerar conexão emocional">🤝 Conectar (Bastidores)</option>
+                                    <option value="Quebrar objeções clássicas de clientes que estão em dúvida se compram ou não">🛡️ Convencer (Quebrar Objeções)</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn-magic" id="generateBtn">
+                                <i class="ph-bold ph-sparkle fs-5"></i> Gerar Alta Conversão
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="saas-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="m-0 text-white">Resultado</h5>
+                            {% if post_gerado %}
+                                <span class="badge-status"><i class="ph-bold ph-check me-1"></i> Pronto</span>
+                            {% endif %}
+                        </div>
+                        
+                        {% if post_gerado %}
+                            <div class="d-flex flex-column gap-3">
+                                
+                                {% if image_url %}
+                                    <div class="border-0 rounded-4 overflow-hidden position-relative w-100" style="aspect-ratio: 1/1; background: #020617;">
+                                        <div id="imageSpinner" class="position-absolute top-50 start-50 translate-middle text-center w-100 p-4">
+                                            <div class="spinner-border mb-3" style="color: var(--brand-color);" role="status"></div>
+                                            <p class="text-white fw-bold mb-1">Renderizando 8K...</p>
+                                            <p class="text-muted" style="font-size: 0.75rem;">Aguarde alguns segundos.</p>
+                                        </div>
+                                        <img src="{{ image_url }}" alt="Criativo Visual" class="img-fluid w-100 h-100 position-relative" style="object-fit: cover; opacity: 0; transition: opacity 0.5s ease; z-index: 2;" onload="document.getElementById('imageSpinner').style.display='none'; this.style.opacity='1';">
+                                    </div>
+                                {% elif format_type != 'feed' %}
+                                    <div class="rounded-4 text-center py-4 d-flex flex-column align-items-center justify-content-center" style="background: rgba(99, 102, 241, 0.1); border: 1px dashed rgba(99,102,241,0.3);">
+                                        <i class="ph-fill ph-video-camera text-primary mb-2" style="font-size: 2.5rem;"></i>
+                                        <p class="text-white fw-semibold m-0 px-3 small">Siga o roteiro abaixo para gravar.</p>
+                                    </div>
+                                {% endif %}
+                                
+                                <div class="post-result shadow-sm">
+                                    {{ post_gerado }}
+                                </div>
+                                
+                                <button class="btn btn-outline-light w-100 fw-bold py-3 rounded-3 d-flex justify-content-center align-items-center gap-2" onclick="copyToClipboard(this)">
+                                    <i class="ph-bold ph-copy fs-5"></i> Copiar Conteúdo
+                                </button>
+                            </div>
+                        {% else %}
+                            <div class="text-center py-5 my-md-5">
+                                <div class="mb-4">
+                                    <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                        <i class="ph-duotone ph-robot text-muted" style="font-size: 3rem;"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-white fw-bold">Aguardando Comando</h5>
+                                <p class="text-muted small m-0 px-3">Defina as opções ao lado para a inteligência artificial começar a trabalhar.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('generateForm').addEventListener('submit', function() {
+        const btn = document.getElementById('generateBtn');
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span> Processando...';
+        btn.style.opacity = '0.7';
+        btn.style.pointerEvents = 'none';
+    });
+
+    function copyToClipboard(btnElement) {
+        const text = `{{ post_gerado|escapejs }}`;
+        navigator.clipboard.writeText(text).then(() => {
+            const originalHTML = btnElement.innerHTML;
+            btnElement.innerHTML = '<i class="ph-bold ph-check text-success me-2 fs-5"></i> Copiado!';
+            btnElement.style.background = 'rgba(16, 185, 129, 0.1)';
+            btnElement.style.color = '#34d399';
+            btnElement.style.borderColor = 'transparent';
+            btnElement.style.pointerEvents = 'none';
+            setTimeout(() => { 
+                btnElement.innerHTML = originalHTML; 
+                btnElement.style = '';
+                btnElement.style.pointerEvents = 'auto';
+            }, 2500);
+        });
+    }
+</script>
+
+</body>
+</html>

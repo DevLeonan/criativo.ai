@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recarregar Créditos | Criativo AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        body { background: #020617; font-family: 'Inter', sans-serif; color: #f8fafc; min-height: 100vh; display: flex; align-items: center; }
+        .checkout-card { background: #0f172a; border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+        .checkout-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #34d399, #6366f1); }
+        .qr-box { background: white; padding: 15px; border-radius: 16px; display: inline-block; }
+        .pix-code { background: #1e293b; border: 1px solid #334155; padding: 15px; border-radius: 12px; font-family: monospace; word-break: break-all; font-size: 0.85rem; color: #94a3b8; }
+        .btn-copy { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 600; width: 100%; margin-top: 10px; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-copy:active { transform: scale(0.98); }
+        .highlight-text { background: linear-gradient(to right, #34d399, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 text-center">
+            <i class="ph-fill ph-rocket-launch text-primary mb-3" style="font-size: 4rem;"></i>
+            <h2 class="fw-bold mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">Vamos bombar suas redes !!! 🚀</h2>
+            <p class="text-muted mb-4 px-md-4">Seu teste gratuito acabou. Recarregue sua conta agora com <strong class="text-white">100 novos créditos</strong> e deixe a inteligência artificial trabalhar por você.</p>
+
+            <div class="checkout-card text-center">
+                <div class="badge bg-success bg-opacity-10 text-success mb-3 px-3 py-2 rounded-pill fw-bold border border-success border-opacity-25">
+                    Pacote 100 Criativos Liberados
+                </div>
+                
+                <h1 class="display-4 fw-bold mb-1">R$ {{ valor }}</h1>
+                <p class="small text-muted mb-4">Você está pagando centavos por <span class="highlight-text">criatividade PURA</span>.</p>
+                
+                <div class="qr-box mb-4">
+                    <img src="data:image/jpeg;base64,{{ qr_code_base64 }}" alt="QR Code Pix" style="width: 200px; height: 200px;">
+                </div>
+                
+                <p class="small text-muted mb-2 fw-semibold text-uppercase">Copie o código PIX abaixo:</p>
+                <div class="pix-code mb-3" id="pixCode">{{ pix_copia_cola }}</div>
+                
+                <button class="btn-copy d-flex align-items-center justify-content-center gap-2" onclick="copiarPix()">
+                    <i class="ph-bold ph-copy fs-5"></i> Copiar Código Pix
+                </button>
+                
+                <p class="text-muted small mt-4 m-0"><i class="ph-fill ph-shield-check text-success me-1"></i> Liberação automática após o pagamento.</p>
+            </div>
+            
+            <a href="/dashboard/" class="text-muted small d-block mt-4 text-decoration-none"><i class="ph-bold ph-arrow-left me-1"></i> Voltar ao painel</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copiarPix() {
+        const text = document.getElementById('pixCode').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.querySelector('.btn-copy');
+            btn.innerHTML = '<i class="ph-bold ph-check fs-5"></i> Código Copiado!';
+            btn.style.background = '#34d399';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="ph-bold ph-copy fs-5"></i> Copiar Código Pix';
+                btn.style.background = 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)';
+            }, 3000);
+        });
+    }
+</script>
+</body>
+</html>
