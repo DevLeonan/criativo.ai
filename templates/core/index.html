@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criativo.AI | Sua Agência de Bolso</title>
+    <title>Criativo.AI | Venda mais com Inteligência Artificial</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,56 +36,55 @@
             position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, var(--brand-glow) 0%, rgba(0,0,0,0) 70%);
             top: -200px; left: 50%; transform: translateX(-50%);
-            z-index: -1; filter: blur(60px); opacity: 0.6; pointer-events: none;
+            z-index: -1; filter: blur(80px); opacity: 0.5; pointer-events: none;
         }
 
         /* Navbar */
         .navbar { background: rgba(2, 6, 23, 0.8) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .nav-logo { height: 35px; width: auto; }
 
         /* Botões de Alta Conversão */
         .btn-cta {
             background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             color: white !important; font-weight: 700; font-size: 1.1rem;
-            padding: 16px 36px; border-radius: 12px; border: none;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+            padding: 18px 40px; border-radius: 12px; border: none;
+            box-shadow: 0 10px 30px -10px var(--brand-primary);
             transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(99, 102, 241, 0.7); }
+        .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 15px 40px -10px rgba(99, 102, 241, 0.8); }
         
-        .btn-outline-light { border: 1px solid rgba(255,255,255,0.2); font-weight: 600; padding: 10px 24px; border-radius: 10px; }
+        .btn-outline-light { border: 1px solid rgba(255,255,255,0.2); font-weight: 600; padding: 10px 24px; border-radius: 10px; transition: 0.2s; }
         .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
 
         /* Typography */
         .text-gradient {
-            background: linear-gradient(to right, #818cf8, #c084fc);
+            background: linear-gradient(135deg, #818cf8 0%, #e879f9 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .highlight-green { color: #34d399; font-weight: 800; }
 
         /* Hero Section */
-        .badge-free { background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.3); color: #34d399; padding: 6px 16px; border-radius: 30px; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 30px; display: inline-block; }
-        .hero-section { padding: 160px 0 100px; text-align: center; position: relative; }
-        .hero-title { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; }
+        .badge-free { background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.3); color: #34d399; padding: 8px 20px; border-radius: 30px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 0 20px rgba(52, 211, 153, 0.1); }
+        .hero-section { padding: 180px 0 120px; text-align: center; position: relative; }
+        .hero-title { font-size: 5rem; font-weight: 800; line-height: 1.05; margin-bottom: 24px; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .hero-subtitle { font-size: 1.35rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px; line-height: 1.6; }
 
         /* Social Proof Banner */
-        .social-proof { border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 30px 0; background: rgba(255,255,255,0.01); }
+        .social-proof { border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 40px 0; background: rgba(255,255,255,0.01); }
 
-        /* Comparison Section (Dor vs Solução) */
-        .comparison-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 40px; height: 100%; position: relative; overflow: hidden; }
-        .comparison-card.bad { border-top: 4px solid #ef4444; }
-        .comparison-card.good { border-top: 4px solid #10b981; box-shadow: 0 10px 40px rgba(16, 185, 129, 0.1); }
-        .list-item { display: flex; gap: 12px; margin-bottom: 16px; color: var(--text-muted); }
-        .list-item i { font-size: 1.2rem; }
+        /* Value Proposition Cards */
+        .value-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 40px; height: 100%; transition: 0.3s; position: relative; overflow: hidden; }
+        .value-card:hover { transform: translateY(-5px); border-color: rgba(99, 102, 241, 0.3); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5); }
+        .icon-wrapper { width: 60px; height: 60px; background: rgba(99, 102, 241, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: #818cf8; font-size: 28px; border: 1px solid rgba(99, 102, 241, 0.2); }
 
         /* Pricing Table */
-        .pricing-card { background: var(--bg-card); border: 2px solid var(--brand-primary); border-radius: 24px; padding: 50px 40px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15); }
-        .pricing-tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 6px 20px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-        .price { font-size: 4.5rem; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; color: white; margin: 15px 0 5px; }
+        .pricing-card { background: linear-gradient(180deg, var(--bg-card) 0%, #020617 100%); border: 2px solid var(--brand-primary); border-radius: 24px; padding: 60px 40px; text-align: center; position: relative; box-shadow: 0 30px 60px -15px rgba(99, 102, 241, 0.2); overflow: hidden; }
+        .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #818cf8, #e879f9); }
+        .pricing-tag { position: absolute; top: 20px; right: 20px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .price { font-size: 5rem; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; color: white; margin: 15px 0 5px; line-height: 1; }
         .price span { font-size: 1.2rem; color: var(--text-muted); font-weight: 500; }
 
-        @media (max-width: 768px) { .hero-title { font-size: 2.8rem; } }
+        @media (max-width: 768px) { .hero-title { font-size: 3rem; } .hero-section { padding: 140px 0 80px; } }
     </style>
 </head>
 <body>
@@ -94,29 +93,31 @@
 
     <nav class="navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
-			<a class="navbar-brand text-decoration-none" href="#">
-				<h4 class="m-0 text-white fw-bold" style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px;">Criativo<span class="text-primary">AI</span></h4>
-			</a>
-            <div class="d-flex gap-3">
-                <a href="/login/" class="btn btn-outline-light d-none d-md-block text-decoration-none">Entrar</a>
-                <a href="/cadastro/" class="btn btn-cta py-2 px-4" style="font-size: 0.9rem;">Criar Post Grátis</a>
+            <a class="navbar-brand text-decoration-none" href="#">
+                <h4 class="m-0 text-white fw-bold" style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px;">Criativo<span class="text-primary">AI</span></h4>
+            </a>
+            <div class="d-flex gap-3 align-items-center">
+                <a href="/login/" class="text-muted d-none d-md-block text-decoration-none fw-semibold me-2 hover-white">Entrar no Painel</a>
+                <a href="/cadastro/" class="btn btn-cta py-2 px-4" style="font-size: 0.9rem;">Testar Ferramenta</a>
             </div>
         </div>
     </nav>
 
-	<section class="hero-section">
+    <section class="hero-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <span class="badge-scarcity">🔥 Oferta de Lançamento: Vagas Limitadas</span>
-                    <h1 class="hero-title">Demita sua agência. <br>Deixe a <span class="text-gradient">Inteligência Artificial</span> vender por você.</h1>
-                    <p class="hero-subtitle">Gere posts de feed altamente persuasivos, imagens em alta resolução e roteiros magnéticos de Reels em <strong>menos de 10 segundos</strong>. Tudo alinhado com as cores e a voz da sua marca.</p>
+                    <div class="badge-free"><i class="ph-fill ph-gift fs-6"></i> Faça um teste gratuito hoje</div>
                     
-                    <div class="mt-5">
-                        <a href="/cadastro/" class="btn btn-cta text-decoration-none px-5 py-4 fs-5">
-                            Quero Automatizar Meu Instagram <i class="ph-bold ph-arrow-right ms-2"></i>
+                    <h1 class="hero-title">O seu Instagram está ignorando <br><span class="text-gradient">quem realmente quer comprar.</span></h1>
+                    
+                    <p class="hero-subtitle">Empreendedores locais perdem clientes todos os dias porque não sabem o que postar. <strong>A nossa Inteligência Artificial analisa o seu negócio</strong>, adota o tom da sua marca e cria campanhas visuais e roteiros magnéticos que transformam seguidores em clientes reais.</p>
+                    
+                    <div class="mt-5 d-flex flex-column align-items-center">
+                        <a href="/cadastro/" class="btn btn-cta btn-lg">
+                            Desbloquear Minha Conta Grátis <i class="ph-bold ph-arrow-right"></i>
                         </a>
-                        <p class="small text-muted mt-3 fw-medium"><i class="ph ph-shield-check text-success me-1"></i> Acesso imediato ao painel. Cancele quando quiser.</p>
+                        <p class="small text-muted mt-3 fw-medium"><i class="ph-fill ph-lock-key text-success me-1"></i> Acesso imediato. Nenhum cartão de crédito exigido agora.</p>
                     </div>
                 </div>
             </div>
@@ -125,12 +126,12 @@
 
     <div class="social-proof text-center">
         <div class="container">
-            <p class="text-uppercase text-muted fw-bold small letter-spacing-1 mb-4">Gerando resultados automáticos para marcas locais e empreendedores</p>
-            <div class="d-flex justify-content-center flex-wrap gap-5 opacity-50">
-                <h4 class="m-0 text-secondary">Hamburguerias</h4>
-                <h4 class="m-0 text-secondary">Clínicas de Estética</h4>
-                <h4 class="m-0 text-secondary">Advocacia</h4>
-                <h4 class="m-0 text-secondary">Studios & Fitness</h4>
+            <p class="text-uppercase text-muted fw-bold small letter-spacing-1 mb-4">A arma secreta para escalar vendas em negócios físicos</p>
+            <div class="d-flex justify-content-center flex-wrap gap-md-5 gap-4 opacity-50">
+                <h4 class="m-0 text-secondary"><i class="ph-fill ph-hamburger me-2"></i>Gastronomia</h4>
+                <h4 class="m-0 text-secondary"><i class="ph-fill ph-tooth me-2"></i>Odontologia</h4>
+                <h4 class="m-0 text-secondary"><i class="ph-fill ph-scales me-2"></i>Advocacia</h4>
+                <h4 class="m-0 text-secondary"><i class="ph-fill ph-barbell me-2"></i>Fitness & Estética</h4>
             </div>
         </div>
     </div>
@@ -138,43 +139,30 @@
     <section class="py-5 my-5">
         <div class="container">
             <div class="text-center mb-5 pb-4">
-                <h2 class="display-5">Chega de queimar dinheiro <br>com marketing lento.</h2>
+                <h2 class="display-5 fw-bold">Nós treinamos a máquina.<br>Você fecha os negócios.</h2>
+                <p class="text-muted fs-5 mt-3 max-w-700 mx-auto">Esqueça os "prompts" complicados. O Criativo.AI já foi programado com a psicologia de vendas que as maiores agências do mundo utilizam.</p>
             </div>
             
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-5">
-                    <div class="comparison-card bad">
-                        <h4 class="text-danger mb-4">O Jeito Velho</h4>
-                        <div class="list-item">
-                            <i class="ph-fill ph-x-circle text-danger"></i>
-                            <span>Pagar fortunas mensais para agências entregarem posts genéricos.</span>
-                        </div>
-                        <div class="list-item">
-                            <i class="ph-fill ph-x-circle text-danger"></i>
-                            <span>Ficar horas travado encarando a tela sem ideias de conteúdo.</span>
-                        </div>
-                        <div class="list-item">
-                            <i class="ph-fill ph-x-circle text-danger"></i>
-                            <span>Textos robóticos do ChatGPT que não geram conexão real.</span>
-                        </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="value-card">
+                        <div class="icon-wrapper"><i class="ph-fill ph-camera"></i></div>
+                        <h4 class="text-white mb-3">Imagens Fotorealistas</h4>
+                        <p class="text-muted m-0">Nada de desenhos artificiais. Nossa IA Flux 8K gera fotos de estúdio de alta gastronomia, estética e lifestyle, já com a <strong>marca d'água da sua empresa</strong> aplicada.</p>
                     </div>
                 </div>
-
-                <div class="col-lg-5">
-                    <div class="comparison-card good">
-                        <h4 class="text-success mb-4">O Jeito Criativo.AI</h4>
-                        <div class="list-item">
-                            <i class="ph-fill ph-check-circle text-success"></i>
-                            <span class="text-white fw-medium">Ideias e estratégias ilimitadas prontas com 1 clique.</span>
-                        </div>
-                        <div class="list-item">
-                            <i class="ph-fill ph-check-circle text-success"></i>
-                            <span class="text-white fw-medium">Imagens em altíssima resolução sem direitos autorais.</span>
-                        </div>
-                        <div class="list-item">
-                            <i class="ph-fill ph-check-circle text-success"></i>
-                            <span class="text-white fw-medium">A IA decora o tom de voz e as regras da sua marca.</span>
-                        </div>
+                <div class="col-lg-4">
+                    <div class="value-card">
+                        <div class="icon-wrapper"><i class="ph-fill ph-video-camera"></i></div>
+                        <h4 class="text-white mb-3">Roteiros Virais de Reels</h4>
+                        <p class="text-muted m-0">Trava na frente da câmera? Nós entregamos o roteiro pronto: o que falar no gancho dos 3 segundos, o que mostrar na tela e como finalizar vendendo o seu serviço.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="value-card">
+                        <div class="icon-wrapper"><i class="ph-fill ph-target"></i></div>
+                        <h4 class="text-white mb-3">Copywriter Persuasivo</h4>
+                        <p class="text-muted m-0">Você decide o objetivo: Quebrar Objeções, Gerar Autoridade ou Fazer Oferta Direta. A IA formata textos limpos, com emojis estratégicos e gatilhos mentais invisíveis.</p>
                     </div>
                 </div>
             </div>
@@ -184,34 +172,43 @@
     <section class="py-5 mb-5" id="planos">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-5">
+                <div class="col-lg-6">
                     <div class="pricing-card">
-                        <span class="pricing-tag">Melhor Custo-Benefício</span>
-                        <h3 class="mb-2">Recarga de Créditos</h3>
-                        <p class="text-muted">Sem mensalidades ou assinaturas presas. Pague apenas pelo que usar.</p>
+                        <span class="pricing-tag">Sem Mensalidades Ocultas</span>
                         
-                        <div class="price">R$ 19,99</div>
-                        <p class="text-muted small mb-4">Você paga apenas <span class="highlight-green">R$ 0,19 por post</span>. É criatividade pura por centavos.</p>
+                        <div class="mb-4">
+                            <h3 class="mb-2 text-white">Pacote Profissional</h3>
+                            <p class="text-muted fs-5">Quanto vale o tempo que você perde tentando criar um único post?</p>
+                        </div>
                         
-                        <ul class="list-unstyled text-start mt-4 mb-5 mx-auto" style="max-width: 270px;">
-                            <li class="mb-3 text-white"><i class="ph-bold ph-check text-success me-2"></i> <strong>100 Créditos</strong> de geração</li>
-                            <li class="mb-3 text-white"><i class="ph-bold ph-check text-success me-2"></i> Renderização de Imagens Flux</li>
-                            <li class="mb-3 text-white"><i class="ph-bold ph-check text-success me-2"></i> Legendas e Copys de Vendas</li>
-                            <li class="mb-3 text-white"><i class="ph-bold ph-check text-success me-2"></i> Roteiros detalhados p/ Reels</li>
-                            <li class="text-white"><i class="ph-bold ph-check text-success me-2"></i> Histórico salvo em nuvem</li>
-                        </ul>
+                        <div class="price">R$ 19<span style="font-size: 2.5rem; vertical-align: super;">,99</span></div>
+                        <p class="text-muted mb-5">Pagamento único via PIX. Você garante <strong class="highlight-green">100 créditos</strong> (apenas R$ 0,19 centavos por estratégia gerada).</p>
                         
-                        <a href="/cadastro/" class="btn-cta w-100 d-block text-decoration-none">Experimentar Grátis Agora</a>
-                        <p class="small text-muted mt-3 mb-0">Comece com 1 post grátis. Recarregue quando quiser.</p>
+                        <div class="text-start mx-auto p-4 rounded-4" style="background: rgba(255,255,255,0.03); max-width: 400px; border: 1px solid rgba(255,255,255,0.05);">
+                            <ul class="list-unstyled m-0">
+                                <li class="mb-3 text-white d-flex align-items-center"><i class="ph-fill ph-check-circle text-primary fs-5 me-3"></i> 100 Geração de Imagens 8K (Flux)</li>
+                                <li class="mb-3 text-white d-flex align-items-center"><i class="ph-fill ph-check-circle text-primary fs-5 me-3"></i> 100 Textos Persuasivos e Roteiros</li>
+                                <li class="mb-3 text-white d-flex align-items-center"><i class="ph-fill ph-check-circle text-primary fs-5 me-3"></i> Ajuste Fino da Identidade da Marca</li>
+                                <li class="text-white d-flex align-items-center"><i class="ph-fill ph-check-circle text-primary fs-5 me-3"></i> Histórico Completo Salvo em Nuvem</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <a href="/cadastro/" class="btn-cta w-100 d-block text-decoration-none py-3">
+                                <i class="ph-bold ph-rocket-launch fs-4 me-2"></i> Começar com o Teste Grátis
+                            </a>
+                            <p class="small text-muted mt-3 mb-0">Use 1 crédito de cortesia para ver a mágica antes de pagar.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-4 text-center" style="border-top: 1px solid rgba(255,255,255,0.05); background: var(--bg-card);">
+    <footer class="py-5 text-center" style="border-top: 1px solid rgba(255,255,255,0.05); background: var(--bg-card);">
         <div class="container">
-            <p class="text-muted small m-0">© 2026 Criativo.AI - Transformando cliques em clientes locais.</p>
+            <h4 class="mb-3 text-white opacity-50 fw-bold" style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px;">CriativoAI</h4>
+            <p class="text-muted small m-0">© 2026 Criativo.AI - Tecnologia para negócios locais que querem dominar sua região.</p>
         </div>
     </footer>
 

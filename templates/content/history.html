@@ -46,9 +46,7 @@
             align-items: center;
         }
 
-        .mobile-logo { height: 32px; width: auto; object-fit: contain; }
-
-        /* Bottom Tab Bar (O Segredo do Mobile) */
+        /* Bottom Tab Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0; width: 100%;
@@ -89,7 +87,7 @@
             border: 1px solid var(--border-color); margin-bottom: 15px; 
         }
         
-        /* Scrollbar Premium para a área de texto */
+        /* Scrollbar Premium */
         .history-text::-webkit-scrollbar { width: 6px; }
         .history-text::-webkit-scrollbar-track { background: transparent; }
         .history-text::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
@@ -111,10 +109,17 @@
 </head>
 <body>
 
-<div class="logo-container mb-4">
+<div class="mobile-header d-md-none">
     <a href="/" class="text-decoration-none">
-        <h3 class="fw-bold m-0" style="color: #6366f1; font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px;">CriativoAI</h3>
+        <h4 class="m-0 text-white fw-bold" style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px;">Criativo<span style="color: var(--brand-color);">AI</span></h4>
     </a>
+    
+    <form action="{% url 'logout' %}" method="post" class="m-0">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline-light text-danger border-0 p-1">
+            <i class="ph-bold ph-sign-out fs-4"></i>
+        </button>
+    </form>
 </div>
 
 <nav class="bottom-nav d-md-none">
@@ -134,9 +139,12 @@
 
 <div class="container-fluid">
     <div class="row">
+        
         <div class="col-md-3 col-lg-2 desktop-sidebar px-4" style="background: var(--bg-card); border-right: 1px solid var(--border-color); min-height: 100vh; padding-top: 2rem;">
             <div class="d-flex align-items-center mb-5 px-2">
-                <img src="{% static 'images/logo.png' %}" alt="Logotipo" style="height: 40px; max-width: 100%; object-fit: contain;">
+                <a href="/" class="text-decoration-none">
+                    <h4 class="m-0 text-white fw-bold" style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px;">Criativo<span style="color: var(--brand-color);">AI</span></h4>
+                </a>
             </div>
             <ul class="nav flex-column gap-2">
                 <li class="nav-item"><a href="/dashboard/" class="nav-link text-muted p-3"><i class="ph-bold ph-magic-wand me-2 fs-5"></i> Criar Conteúdo</a></li>
