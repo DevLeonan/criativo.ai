@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ['*']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # 2. Libera os formulários de POST (Login, Cadastro e Checkout) para o seu domínio
-CSRF_TRUSTED_ORIGINS = ['criativo-ai.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://criativo-ai.up.railway.app/']
 
 
 
