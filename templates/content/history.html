@@ -111,15 +111,10 @@
 </head>
 <body>
 
-<div class="mobile-header d-md-none">
-    <img src="{% static 'images/logo.png' %}" alt="Logo" class="mobile-logo" onerror="this.outerHTML='<h5 class=\'m-0 text-white\'>Criativo.AI</h5>'">
-    
-    <form action="{% url 'logout' %}" method="post" class="m-0">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-sm btn-outline-light text-danger border-0 p-1">
-            <i class="ph-bold ph-sign-out fs-4"></i>
-        </button>
-    </form>
+<div class="logo-container mb-4">
+    <a href="/" class="text-decoration-none">
+        <h3 class="fw-bold m-0" style="color: #6366f1; font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px;">CriativoAI</h3>
+    </a>
 </div>
 
 <nav class="bottom-nav d-md-none">
