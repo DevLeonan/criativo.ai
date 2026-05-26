@@ -30,10 +30,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-chave-padrao-local')
 # Só fica True se estivermos rodando no PC
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-# Permite que o Railway acesse o site
+# Permite acesso de qualquer host (O Railway gerencia isso)
 ALLOWED_HOSTS = ['*']
 
-# Adicione esta linha com o seu domínio exato do Railway:
+# 1. Avisa o Django que o tráfego do Railway é HTTPS seguro
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# 2. Libera os formulários de POST (Login, Cadastro e Checkout) para o seu domínio
 CSRF_TRUSTED_ORIGINS = ['criativo-ai.up.railway.app']
 
 
